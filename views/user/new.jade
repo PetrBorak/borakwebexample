@@ -1,0 +1,14 @@
+extend ../layout
+
+block content
+  h1 New User
+  
+  form(method="POST", action="/user")
+    p
+      label(for="name") Name
+      input#name(name="name")
+    p
+      label(for="password") Password
+      input#name(name="password")
+    p
+      input(type="submit", value="Create")

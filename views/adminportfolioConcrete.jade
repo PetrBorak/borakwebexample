@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  #main
+    #image
+      img(src=item[0].img) 
+    form(action="/adminportfolio/"+item[0].type+"/"+item[0]._id, enctype="multipart/form-data", method="post")
+      
+      input(type="hidden", name="_method", value="PUT")
+      label(for="headline") Headline
+      input(type="text", id="headline", name="headline", value=item[0].headline)
+      label(for="urltosite") Url to site
+      input(type="text", id="urltosite", name="urlToSite", value=item[0].urlToSite)
+      label(for="day") Day
+      input(type="text", id="day", name="day", value=item[0].day)
+      label(for="nth") nth
+      input(type="text", id="nth", name="nth", value=item[0].nth)
+      label(for="month") Month
+      input(type="text", id="month", name="month", value=item[0].month)
+      label(for="year") Year
+      input(type="text", id="year", name="year", value=item[0].year)
+      label(for="description") Description
+      input(type="text", id="description", name="description", value=item[0].description)
+      label(for="largeimg") Large img
+      input(type="file", id="largeimg", name="largeImg")
+      input(type="file", name="img")
+      input(type="submit", value="odesli")

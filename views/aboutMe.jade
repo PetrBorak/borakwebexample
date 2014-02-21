@@ -1,0 +1,27 @@
+extend layout
+
+block content
+  #{aboutMe}
+  if(aboutMe!=null)
+    form(action="/aboutMe", method="POST")
+      select(name="lang")
+        if(aboutMe.lang =='en')
+          option(value="en", selected="true") English
+          option(value="cz") Czech
+        else
+          option(value="en") English
+          option(value="cz", selected="true") Czech
+      input(type="text", value=aboutMe.headline, name="headline")
+      textarea(name="content") #{aboutMe.content}
+      input(type="submit", value='odesli')
+  else                                    
+    form(action="/aboutMe", method="POST")
+      select(name="lang")
+       option(value="en") English
+       option(value="cz") Czech
+      input(type="text", name="headline")
+      textarea(name="content", id="content")
+      input(type="submit", value='odesli')  
+  div#uniqueId(data-mercury="full")
+  script(type='text/javascript')
+    CKEDITOR.replace("content");

@@ -1,0 +1,14 @@
+extend ../layout
+
+block content
+
+  #activities
+    #left
+      H2= type
+      .articleConcrete
+        H3= activities.header
+        .articleIn
+          .perex!= activities.perex
+          .main!= activities.main
+    #right
+      .rightIn

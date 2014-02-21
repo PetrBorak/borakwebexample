@@ -1,0 +1,28 @@
+extend layoutBlog
+
+block content
+      h2(class="nmb") #{blogArticle.header}
+      div.shadowedArticle
+        div.shadowedArticleIn
+          p.created Posted: &nbsp;#{blogArticle.dateCreated} 
+              span.superscript #{blogArticle.nth}
+              &nbsp;#{blogArticle.nameOfMonth},&nbsp;#{blogArticle.yearCreated},&nbsp;#{blogArticle.hoursCreated}:#{blogArticle.minutesCreated}
+          div.blogArticlePerex!= blogArticle.perex
+          div.blogArticleMain!= blogArticle.main
+          script(type="text/javascript")
+              var timeout = setTimeout(
+                 function(){
+                  SyntaxHighlighter.all();
+                  var evt = document.createEvent('Event');  
+                  evt.initEvent('load', false, false);  
+                  window.dispatchEvent(evt);
+                  console.log("timeout 02 called");
+                 },5000
+              )});
+              
+block rightColumn
+  div.itemRight
+    h4 Related articles
+    each relateda in related
+      p
+        a(href="/blogarticle/articles/"+relateda._id)= relateda.header

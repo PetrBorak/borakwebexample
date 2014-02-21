@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  #main
+    - for(var item in items){
+        div#row
+          a(href="/adminportfolio/"+items[item].type+"/"+items[item]._id) #{items[item].headline} &nbsp; #{items[item].description}
+          form(action="/adminportfolio/"+items[item].type+"/"+items[item]._id, method="post")      
+            input(type="hidden", name="_method", value="delete")
+            input(type="submit", value="Delete Item")
+            
+    - }
+    a(id="addNewItem", href="/portfolio/"+active+"/new") Add New Item               

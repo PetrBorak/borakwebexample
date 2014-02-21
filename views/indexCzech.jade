@@ -1,0 +1,79 @@
+extend layoutCzech
+
+block content
+          script(type="text/javascript")
+            $(document).ready(function(){
+              var nofslides = $("#slideshow ul li").length;
+              console.log(nofslides);
+              var lengthos = nofslides * 1200;
+              $("#slideshow ul").css({"width":lengthos+"px"});
+              var counter = 0;
+              function slider(){
+              if((counter + 1) >= nofslides){
+              counter = 0;
+              $("#slideshow ul").animate({"left":"0px"},1000,function(){
+              tos = setTimeout(function(){slider();},10000);
+              });
+              }else{
+              counter++;
+              var toleft = (counter * 1200)*(-1);
+              $("#slideshow ul").animate({"left":toleft+"px"},1000,function(){
+              tos = setTimeout(function(){slider();},10000);
+              });
+              
+              }
+              
+              }
+              var tos = setTimeout(function(){
+              slider();
+              },10000)
+            });
+          
+           #slideshow
+            ul
+              li
+                h1 Výhodná nabídka pro všechny.
+                img(src="/images/slideshowImg.png")
+                #content Nabízím tvorbu profesionální webové prezentace za příznivé ceny. Má práce vždy sestává z grafického layoutu, konzultací požadavků zákazníkových individuálních požadavků a konzultací požadavků na volbu CMS, jehož tvorba může být založena jak na server-side javascriptu tak na frameworku CAKE PHP. Služby zde nabízené také zahrnují registraci domény a hostingové služby v profesionálních datových centrech. 
+                a(href="/underConstruction", id="findOutMore")  Zjistit více
+              li
+                h1 Calipso CMS.
+                img(src="/images/slide02.png")
+                #content V současné době se velmi zajímám o Node.js a vše kolem této technologie založené na platformě V8 od společnosti Google. Proto Vám zde nabízím tvorbu jednoduché webové prezentace založené na těchto technologiích, jmenovitě využití CMS Callipso. Během času to tady rozšířím a nabídku upřesním pod odkazem buttonu "Zjistit více". Prosím o trpělivost.
+                a(href="/underConstruction", id="findOutMore")  Zjistit více
+              li
+                h1 Ilustrování je mým koníčkem.
+                img(src="/images/slide03.png")
+                #content Tvorba grafiky je pro mě velice odpočinkovou činností. Jsem jen já a můj milovaný Wacom Intuos5 M PTK-650-EN. Honí se Vám hlavou nějaká představa, nebo obraz o potřebujejete jej dostat ven? Neváhejte mě kontaktovat.
+                a(href="/underConstruction", id="findOutMore")  Zjistit více                  
+           #underSlideshow
+            #webdesignUS
+              h2 Webdesign
+              .but
+                a(href="/aktivity/web") zjistit více
+            #dtpUS
+              h2 DTP
+              .but
+                a(href="/aktivity/dtp") zjistit více
+            #grafikaUS
+              h2 Grafika
+              .but            
+                a(href="/aktivity/grafika") zjistit více
+           #main
+            #left
+              .article
+                h2 #{aboutMe.headline}
+                p!= aboutMe.content
+                
+              .article
+                h2 Z blogu - #{blog.header}                
+                div !{blog.perex}
+                a.allBlogIndex(href="/blog/cz") Všechny články
+                a.moreBlogIndex(href="/blogarticle/articles/"+blog._id+"/cz") Více z tohoto
+                div.clearfix
+            #right
+              h2 Feedback
+              div#buble02 Když vezmu v potaz mou spolupráci s Petrem, nezbývá než konstatovat, že je to opravdu profesionální webdesigner. Je velmi flexibilní při práci s každou mou myšlenkou a nápadem. Ze začátku jsem neměl přesnou představu jak by měla moje prezentace vypadat. Tak či tak, Petr perfektně nadesignoval a nakódoval celý můj eshop. Jeho reakce jsou rychlé a má příjemný přístup.
+                p#titleOneFb Michal Šťastný
+                  a(href="http://www.chytrykup.cz")&nbsp;Chytrykup.cz
+                       

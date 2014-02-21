@@ -1,0 +1,14 @@
+extend layoutBlog
+
+block content
+
+  script(type="text/javascript")
+    function secondOne(){
+      var x = 'some other value';
+      return function inner(){
+      alert(x);
+      }}
+    function thirdOne(){
+      return inner;
+    }
+    thirdOne()();

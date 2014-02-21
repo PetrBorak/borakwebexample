@@ -1,0 +1,24 @@
+extend ../layout
+
+block content
+  h2 #{type} / english
+  ul#activitiesList
+   - for(var activiti in activities){
+      li.h50
+        a(href="/adminactivities/"+type+"/"+activities[activiti]._id)  #{activities[activiti].header}
+        form(method="POST", action="/adminactivities/"+activities[activiti].type+"/"+activities[activiti]._id)
+          input(type="hidden", name="_method", value="DELETE")
+          input(type="submit", value="Delete article")
+   - }
+   a(href="/adminactivitiesnew/"+type) Add nev item
+   
+   h2 #{type} / czech
+  ul#activitiesList
+   - for(var activiti in activitiesCzech){
+      li.h50
+        a(href="/adminactivities/"+type+"/"+activitiesCzech[activiti]._id)  #{activitiesCzech[activiti].header}
+        form(method="POST", action="/adminactivities/"+activitiesCzech[activiti].type+"/"+activitiesCzech[activiti]._id)
+          input(type="hidden", name="_method", value="DELETE")
+          input(type="submit", value="Delete article")
+   - }
+   a(href="/adminactivitiesnew/"+type) Add nev item

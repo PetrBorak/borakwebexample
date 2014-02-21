@@ -1,0 +1,7 @@
+extend ../layout
+
+block content
+  #info To change the user please log out first
+  form(action="/session", method="POST")
+    input(type="hidden", name="_method", value="delete")
+    input(type="submit", value="Log out")

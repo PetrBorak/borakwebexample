@@ -1,0 +1,10 @@
+extend ../layout
+
+block content
+  div#user
+    form(action="/user", method="POST")
+      label(for="user") User Name:
+      input(type="text", id="user", name="user")
+      label(for="password") Password:
+      input(type="text", id="password", name="password")
+      input(type="submit", value="Log in")

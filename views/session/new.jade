@@ -1,0 +1,14 @@
+extend ../layout
+
+block content
+
+  h1 Log in
+  form(method="POST", action="/session")
+    p
+      label(for="name") Name
+      input#name(name="name")
+    p
+      label(for="password") Password:
+      input#password(name="password", type="password")
+    
+    input(type="submit") Log in

@@ -1,0 +1,15 @@
+extend ../layoutCzech
+
+block content
+  #activities
+    #left
+      - for(var activity in activities){
+        H2.nmb= activities[activity].header 
+        .shadowedArticle
+          .shadowedArticleIn
+            .blogArticlePerex!=activities[activity].perex
+            .blogArticleMain!=activities[activity].main
+          
+      - }
+    #right
+      .rightIn

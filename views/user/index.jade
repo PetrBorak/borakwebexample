@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+
+  h1 Users
+  p 
+    a(href="/user/new") Create new profile
+  ul
+    - for (var username in users){
+      li 
+        a(href="/users/"+username)= users[username].name
+    - };

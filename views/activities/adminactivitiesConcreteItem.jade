@@ -1,0 +1,16 @@
+extend ../layout
+
+block content
+  #{activity}
+  form(method="Post", action="/adminactivities/"+typex+"/"+activity._id)
+    input(type="hidden", name="_method", value="PUT")
+    input(type="text", value=activity.header, name="header")
+    select(name="lang")
+      option(value="cz") Czech
+      option(value="en") English
+    textarea(name="perex",id="perex") #{activity.perex}
+    textarea(name="main", id="main")  #{activity.main}
+    input(type="submit", value="Save Item")
+    script(type='text/javascript')
+      CKEDITOR.replace("perex");
+      CKEDITOR.replace("main");

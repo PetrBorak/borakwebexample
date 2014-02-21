@@ -1,0 +1,110 @@
+extends layout
+
+block content
+  div(id="coverFlow",ng-app="main", ng-controller="CoverflowController")
+    div.navigation
+      - if(active=="webdesign")
+        div.button.active
+          span.first
+          span.middle
+            a(href="/portfolio/webdesign#coverflow", name="coverflow") Webdesign
+          span.back
+      -else
+        div.button
+          span.first
+          span.middle
+            a(href="/portfolio/webdesign#coverflow", name="coverflow") Webdesign
+          span.back
+          
+      - if(active=="logotypes")
+        div.button.active
+          span.first
+          span.middle
+            a(href="/portfolio/logotypes#coverflow") Logotypes
+          span.back
+      -else
+        div.button
+          span.first
+          span.middle
+            a(href="/portfolio/logotypes#coverflow") Logotypes
+          span.back 
+          
+      - if(active=="illustrations")
+        div.button.active
+          span.first
+          span.middle
+            a(href="/portfolio/illustrations#coverflow") Illustrations
+          span.back
+      -else
+        div.button
+          span.first
+          span.middle
+            a(href="/portfolio/illustrations#coverflow") Illustrations
+          span.back
+          
+      - if(active=="others")
+        div.button.active
+          span.first
+          span.middle
+            a(href="/portfolio/others#coverflow") Others
+          span.back
+      -else
+        div.button
+          span.first
+          span.middle
+            a(href="/portfolio/others#coverflow") Others
+          span.back                     
+                     
+
+        
+    div.mainSl
+      .arrowCont
+        a(class="arrowLeft", ng-class="{{activeArrowLeft}}", ng-click="slideLeft()")
+      div(id="mainAreaSl")
+        ul(class="mainAreaIn", style="width:{{"+recipethumbs.length+"*189}}px")
+         
+          - for(var recipe in recipethumbs)
+            li
+              a(ng-href="/portfolio/"+recipethumbs[recipe].type+"/"+recipethumbs[recipe]._id+"#coverflow", ng-class="{active:'"+detailpt[0]._id+"'=='"+recipethumbs[recipe]._id+"'}")
+               img(src=recipethumbs[recipe].img)
+      
+      .arrowCont    
+        a(class="arrowRight", ng-class="{{activeArrowRight}}", ng-click="slideRight()")
+    div#infoSlideShow
+
+      - if (previtem!=null && previtem!=undefined && previtem[0] != undefined){
+            hrefPrev = "/portfolio/"+detailpt[0].type+"/"+previtem[0]._id+"#mainSlidesAnch"
+      -  }
+      - else {
+            hrefPrev = "#coverflow"
+      - }
+      
+      - if (nextitem!=null && nextitem != undefined){
+            hrefNext = "/portfolio/"+detailpt[0].type+"/"+nextitem._id+"#mainSlidesAnch"
+      -  }
+      - else {
+            hrefNext = "#coverflow"
+      - }
+          
+      div#InfoPanelArrowLeft
+          a(name="infoBlock", class="arrowLeft", href=hrefPrev)      
+      
+
+        
+
+     
+        
+
+      div.infoPanel
+        div.info
+            p
+              span.headline #{detailpt[0].headline}
+              span.month #{detailpt[0].month}
+              span.year #{detailpt[0].year}
+            p.descriptionCont
+              span.description #{detailpt[0].description}
+      div#InfoPanelArrowRight
+        a(class="arrowRight", href=hrefNext, name="mainSlidesAnch") 
+  div(id="mainPicture")
+    a(href=detailpt[0].urlToSite)
+      img(src=detailpt[0].largeImg)

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  #main
+    #image
+      
+    form(action="/adminportfolio/"+current, enctype="multipart/form-data", method="post")                        
+      
+      
+      label(for="headline") Headline      
+      input(type="text", id="headline", name="headline")
+      label(for="urlToSite") urlToSite
+      input(type="text", id="urlToSite", name="urlToSite")
+      label(for="day") Day
+      input(type="text", id="day", name="day")
+      label(for="nth") Nth
+      input(type="text", id="nth", name="nth")
+      label(for="month") Month
+      input(type="text", id="month", name="month")
+      label(for="year") Year
+      input(type="text", id="year", name="year")
+      label(for="description") Description
+      input(type="text", id="description", name="description")
+      label(for="largeImg") Large img
+      input(type="file", id="largeImg", name="largeImg")
+      label(for="img") img
+      input(type="file", id="img", name="img")
+      input(type="submit", value="odesli")

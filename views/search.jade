@@ -1,0 +1,51 @@
+extend layout
+
+block content
+    
+  #activities
+    script(type="text/javascript")
+          $(document).ready(function(){
+            $("#activities .article").each(function(index,obj){
+            if(index%2 == 0){
+            $(obj).css({"margin-left":"0px"})
+            }else{
+            $(obj).css({"margin-left":"10px"});
+            }
+          });
+          })
+    #left
+  
+      H2 Search results
+      - for(var result in results){
+        .article
+ 
+          H3= results[result].headline
+          .articleIn
+            p
+              results[result].content
+              .button                           
+                a(href="/") More
+      - }
+      
+      - for(var result in results00){
+        .article
+ 
+          H3= results00[result].headline
+          .articleIn
+            p= results00[result].description
+            
+          .button                           
+              a(href="/portfolio/"+results00[result].type+"/"+results00[result]._id) More
+      - }
+
+      - for(var result in results01){
+        .article
+ 
+          H3= results01[result].header
+          .articleIn!= results01[result].perex
+            
+          .button                           
+              a(href="/activities/"+results01[result].type+"/"+results01[result]._id) More
+      - }
+    #right
+      .rightIn
